@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
-
-dotenv.config();
+import openai from 'openai';
 
 const app = express();
+app.use(express.json());
+dotenv.config();
+
 const PORT = 3000;
 
 app.get('/', (req, res) => {
