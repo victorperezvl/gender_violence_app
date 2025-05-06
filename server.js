@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import openai from 'openai';
 import authRoutes from './routes/auth.routes.js';
+import chatRoutes from './routes/chat.routes.js';
 
 const app = express();
 app.use(express.json());
@@ -21,3 +22,4 @@ app.listen (PORT, () => {
 
 //Routes
 app.use('/api/auth/', authRoutes);
+app.use('/api/chat', chatRoutes);
