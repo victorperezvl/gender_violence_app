@@ -1,10 +1,9 @@
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secreto_temporal';
-const EXPIRES_IN = '1d'; 
 
 export function generateToken(payload) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: EXPIRES_IN });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
 }
 
 export function verifyToken(token) {
