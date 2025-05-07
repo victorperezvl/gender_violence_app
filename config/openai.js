@@ -1,5 +1,7 @@
+// This file is responsible for configuring the OpenAI API client using the openai library
 import { OpenAI } from 'openai';
 
+// New instance of OpenAI client
 const openai = new OpenAI ({
     apiKey: process.env.OPENAI_KEY, 
     model: "gpt-4",                    
@@ -10,6 +12,7 @@ const openai = new OpenAI ({
     presence_penalty: 0
 });
 
+// Function to send a message to the AI and get a response
 export async function messageToAI ( messages ) {
     try {
         const response = await openai.chat.completions.create({

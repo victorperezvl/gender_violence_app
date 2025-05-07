@@ -1,8 +1,10 @@
+// This file contains the authentication controller functions for user registration and login.
 import db from '../config/db.js';
 import bcrypt from 'bcrypt'; 
 import { generateToken } from '../config/jwt.js';
 import { verifyToken } from '../config/jwt.js';
 
+// Register a new user
 export async function register(req, res) {
     const { email, password, name } = req.body;
   
@@ -29,9 +31,11 @@ export async function register(req, res) {
       console.error('Error en el registro:', error);
       res.status(500).json({ error: 'Error interno del servidor' });
     }
-  }
+}
+
   
-  export async function login(req, res) {
+// Login an existing user
+export async function login(req, res) {
     const { email, password } = req.body;
   
     if (!email || !password) return res.status(400).json({ error: 'Email y contraseña requeridos' });
@@ -61,4 +65,4 @@ export async function register(req, res) {
       console.error('Error en el login:', error);
       res.status(500).json({ error: 'Error interno del servidor' });
     }
-  }
+}

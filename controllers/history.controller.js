@@ -1,5 +1,7 @@
+// This file contains the controller functions for handling message history
 import { deleteMessage, getMessages } from "../models/message.model.js";
 
+// Delete message history 
 export async function deleteHistory(req, res) {
 
   try {
@@ -11,6 +13,7 @@ export async function deleteHistory(req, res) {
   }
 };
 
+// Get message history
 export async function getHistory(req, res) {
     try {
         const messages = await getMessages(req.user.id);

@@ -1,3 +1,4 @@
+// File for defining chat and history routes
 import express from 'express';
 const router = express.Router();
 import { handleChat } from '../controllers/chat.controller.js';    

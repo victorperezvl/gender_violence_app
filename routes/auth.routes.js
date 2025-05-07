@@ -1,3 +1,4 @@
+// File for defining authentication routes
 import express from 'express';
 const router = express.Router();
 import { register, login } from '../controllers/auth.controller.js';

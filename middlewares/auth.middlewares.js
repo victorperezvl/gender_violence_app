@@ -1,3 +1,4 @@
+// Middleware to verify the JWT token in requests
 import { verifyToken } from '../config/jwt.js';
 
 export function authMiddleware(req, res, next) {

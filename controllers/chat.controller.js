@@ -1,3 +1,4 @@
+// This file handles the chat functionality for the AI psychologist application
 import { messageToAI } from '../config/openai.js';
 
 export async function handleChat(req, res) {

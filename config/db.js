@@ -1,3 +1,4 @@
+// This file is responsible for creating a connection pool to the MySQL database using the mysql2 library
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 dotenv.config();
