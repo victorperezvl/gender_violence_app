@@ -1,10 +1,12 @@
 import React from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import TopBar from '../components/TopBar';
 
 const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.icon} source={require('../../assets/ayto_motril.png')} />
+     <TopBar  onHelpPress={() => navigation.navigate('Help')} />
+
      <View style={styles.box}>
       <View style={styles.header}>
         <Text style={styles.title}>Hola, ¿en qué puedo ayudarte?</Text>
@@ -22,39 +24,35 @@ const HomeScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Recursos</Text>
         </TouchableOpacity>
-       </View>
-      </View>
+      </View>    
+
+     </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    height: '100%',
     flex: 1,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-   icon: {
-    width: 80,
-    height: 80,
-    marginBottom: 15,
+    position: 'relative',    
   },
   box: {
     width: '90%',
+    height: '50%',
     backgroundColor: '#6A3DA6',
     borderRadius: 20,
     padding: 20,
     alignItems: 'center',
+    position: 'absolute',
+    top: 80
   },
   header: {
     alignItems: 'center',
-    marginBottom: 40,
-  },
-  icon: {
-    width: 130,
-    height: 50,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   title: {
     fontSize: 22,
@@ -66,8 +64,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#FFFFFF',
     textAlign: 'center',
-    marginTop: 40,
-    marginBottom: 5,
+    marginTop: 10,
+    marginBottom: 10,
   },
   buttonContainer: {
     width: '95%',
@@ -82,6 +80,21 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center',
     fontSize: 20,
+  },
+  chatContainer: {
+    width: '90%',
+    height: '30%',
+    backgroundColor: '#6A3DA6',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    marginTop: 500,
+  },
+  chatTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    textAlign: 'center',
   },
 });
 
