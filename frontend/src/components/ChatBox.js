@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 const ChatBox = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>👜 Asistente de Apoyo</Text>
+      <Text style={styles.title}>💬 Asistente de Apoyo</Text>
       <View style={styles.chatWindow}>
         <Text style={styles.assistantMessage}>
           Hola, soy tu asistente virtual. Estoy aquí para brindarte información y apoyo. ¿Cómo puedo ayudarte hoy?
@@ -24,9 +24,10 @@ const ChatBox = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#EADCF8',
-    borderRadius: 10,
+    borderRadius: 20,
     padding: 10,
     width: '100%',
+    height: 240,
     marginTop: 20,
   },
   title: {
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5E8FF',
     borderRadius: 10,
     padding: 10,
-    marginBottom: 10,
+    marginBottom: 58,
   },
   assistantMessage: {
     fontSize: 14,
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 5,
+    height: 60,
   },
   input: {
     flex: 1,
