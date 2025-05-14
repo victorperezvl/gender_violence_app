@@ -9,8 +9,11 @@ const TopBar = ({ onHelpPress }) => {
         source={require('../../assets/ayto_motril.png')}
         resizeMode="contain"
       />
+      <TouchableOpacity style={styles.loginButton} onPress={onHelpPress}>
+        <Text style={styles.helpButtonText}>Login</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.helpButton} onPress={onHelpPress}>
-        <Text style={styles.helpButtonText}>Ayuda</Text>
+        <Text style={styles.loginButtonText}>Ayuda</Text>
       </TouchableOpacity>
     </View>
   );
@@ -41,6 +44,18 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   helpButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  loginButton: {
+    backgroundColor: '#6A3DA6',
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    marginRight: -100,
+  },
+  loginButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: 'bold',
