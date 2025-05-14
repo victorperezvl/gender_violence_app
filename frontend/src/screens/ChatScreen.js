@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -34,7 +36,11 @@ const ChatScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={90} // Ajusta este valor para darle espacio al header
+    >
       <View style={styles.header}>
         <Ionicons
           name="arrow-back"
@@ -45,7 +51,11 @@ const ChatScreen = ({ navigation }) => {
         <Text style={styles.headerTitle}>💬 Asistente de Apoyo</Text>
       </View>
 
-      <ScrollView style={styles.chatWindow}>
+      <ScrollView
+        style={styles.chatWindow}
+        contentContainerStyle={{ paddingVertical: 10 }}
+        showsVerticalScrollIndicator={false}
+      >
         {messages.map((message) => (
           <View
             key={message.id}
@@ -65,12 +75,17 @@ const ChatScreen = ({ navigation }) => {
           placeholder="Escribe tu mensaje..."
           value={inputMessage}
           onChangeText={setInputMessage}
+          returnKeyType="send"
+          onSubmitEditing={sendMessage}
+          multiline={true} 
+          numberOfLines={1} 
+          textAlignVertical="top"         
         />
         <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
           <Ionicons name="send" size={20} color="white" />
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -129,14 +144,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 8,
     paddingHorizontal: 10,
-    margin: 10,
-    height: 50,
-    marginBottom: 40,
     margin: 20,
+    height: 50,
+    marginBottom: 30,
+    marginTop: 10,
   },
   input: {
     flex: 1,
     fontSize: 14,
+    maxHeight: 150, 
+    paddingVertical: 5,
   },
   sendButton: {
     backgroundColor: '#6A3DA6',
