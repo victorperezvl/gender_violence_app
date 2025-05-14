@@ -85,6 +85,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#6A3DA6',
     paddingVertical: 10,
     paddingHorizontal: 15,
+    borderRadius: 10,
+    height: 40,
+    weight: 30,
+    margin: 15, 
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
   },
   headerTitle: {
     color: '#FFFFFF',
@@ -101,6 +109,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 10,
     borderRadius: 10,
+    elevation: 1,
   },
   userMessage: {
     alignSelf: 'flex-end',
@@ -121,6 +130,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     margin: 10,
+    height: 50,
+    marginBottom: 40,
+    margin: 20,
   },
   input: {
     flex: 1,

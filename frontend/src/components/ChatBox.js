@@ -20,7 +20,7 @@ const ChatBox = () => {
         </View>
         <View style={styles.inputContainer}>
           <TextInput style={styles.input} placeholder="Escribe tu mensaje..." />
-          <TouchableOpacity style={styles.sendButton}>
+          <TouchableOpacity style={styles.sendButton} onPress={handleOpenChat}>
             <Ionicons name="send" size={20} color="white" />
           </TouchableOpacity>
         </View>
