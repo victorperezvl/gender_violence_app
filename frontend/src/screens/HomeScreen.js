@@ -3,6 +3,7 @@ import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet, ScrollVi
 import TopBar from '../components/TopBar';
 import ChatBox from '../components/ChatBox';
 import BoxHome from '../components/BoxHome';
+import ResourcesBox from '../components/ResourcesBox';
 
 const HomeScreen = ({ navigation }) => {
   const scrollViewRef = useRef();
@@ -23,6 +24,7 @@ const HomeScreen = ({ navigation }) => {
       <ScrollView style={styles.content} ref={scrollViewRef}>
           <BoxHome onScrollToResources = { scrollToResources }/>
           <ChatBox />
+          <ResourcesBox ref={boxHomeRef} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     marginHorizontal: 20,            
-    marginTop: 90,              
+    marginTop: 90,            
   },
   
 });
