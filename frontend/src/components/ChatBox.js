@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 240,
     marginTop: 20,
+    flex: 1,
   },
   title: {
     fontSize: 16,
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginBottom: 58,
+    flex: 1,
   },
   assistantMessage: {
     fontSize: 14,

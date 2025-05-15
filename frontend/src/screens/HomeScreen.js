@@ -1,17 +1,29 @@
-import React from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import React, {useRef} from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView} from 'react-native';
 import TopBar from '../components/TopBar';
 import ChatBox from '../components/ChatBox';
 import BoxHome from '../components/BoxHome';
 
 const HomeScreen = ({ navigation }) => {
+  const scrollViewRef = useRef();
+  const boxHomeRef = useRef();
+
+  const scrollToResources = () => {
+     boxHomeRef.current?.measureLayout(
+      scrollViewRef.current.getInnerViewNode(),
+      (x, y) => {
+        scrollViewRef.current.scrollTo({ y: y, animated: true });
+      }
+    );
+  };
+
   return (
      <SafeAreaView style={styles.container}>
       <TopBar />
-      <View style={styles.content}>
-        <BoxHome />
-        <ChatBox />
-      </View>
+      <ScrollView style={styles.content} ref={scrollViewRef}>
+          <BoxHome onScrollToResources = { scrollToResources }/>
+          <ChatBox />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -23,9 +35,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: 'space-between', 
     marginHorizontal: 20,            
-    marginVertical: 90,              
+    marginTop: 90,              
   },
   
 });

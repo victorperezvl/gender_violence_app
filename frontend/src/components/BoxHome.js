@@ -1,7 +1,13 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const BoxHome = () => {
+const BoxHome = ( onScrollToResources ) => {
+
+  const navigation = useNavigation();
+  const openChatWithPrompt = (prompt) => {
+    navigation.navigate('Chat', { initialPrompt: prompt });
+  }
     return (
         <View style={styles.box}>
             <View style={styles.header}>
@@ -11,13 +17,13 @@ const BoxHome = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => openChatWithPrompt('Necesito información')}>
                 <Text style={styles.buttonText}>Necesito información</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress= {() => openChatWithPrompt('Quiero hablar con alguien')}>
                 <Text style={styles.buttonText}>Quiero denunciar un abuso</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={ onScrollToResources }>
                 <Text style={styles.buttonText}>Recursos</Text>
                 </TouchableOpacity>
             </View>    
