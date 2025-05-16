@@ -1,4 +1,3 @@
-// src/screens/ChatScreen.js
 import React, { useState } from 'react';
 import {
   View,
@@ -14,30 +13,24 @@ import { Ionicons } from '@expo/vector-icons';
 import { sendMessageToAi } from '../services/chatService';
 
 const ChatScreen = ({ navigation }) => {
-  // Estado para los mensajes
   const [messages, setMessages] = useState([
     { id: 1, text: 'Hola, soy tu asistente virtual. ¿En qué puedo ayudarte?', sender: 'bot' },
   ]);
   const [inputMessage, setInputMessage] = useState('');
 
-  // Función para enviar un mensaje
   const sendMessage = async () => {
     if (inputMessage.trim() === '') return;
 
-    // Añadir mensaje del usuario
     const newMessage = { id: Date.now(), text: inputMessage, sender: 'user' };
     setMessages([...messages, newMessage]);
     setInputMessage('');
 
-    // Simulación de respuesta del bot (luego se conecta al backend)
     try {
-      // Enviar el mensaje al backend y obtener la respuesta
       const response = await sendMessageToAi(inputMessage);
 
-      // Añadir la respuesta del chatbot al chat
       setMessages((prevMessages) => [
         ...prevMessages,
-        { sender: 'bot', text: response.reply }, // 👈 Aquí va la propiedad que devuelve tu backend
+        { sender: 'bot', text: response.reply }, 
       ]);
     } catch (error) {
       console.error('Error al enviar el mensaje:', error.message);
@@ -48,7 +41,7 @@ const ChatScreen = ({ navigation }) => {
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={90} // Ajusta este valor para darle espacio al header
+      keyboardVerticalOffset={90} 
     >
       <View style={styles.header}>
         <Ionicons
