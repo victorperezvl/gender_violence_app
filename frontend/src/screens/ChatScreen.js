@@ -11,6 +11,7 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { sendMessageToAi } from '../services/chatService';
 
 const ChatScreen = ({ navigation }) => {
   // Estado para los mensajes
@@ -29,10 +30,19 @@ const ChatScreen = ({ navigation }) => {
     setInputMessage('');
 
     // Simulación de respuesta del bot (luego se conecta al backend)
-    setTimeout(() => {
-      const botResponse = { id: Date.now() + 1, text: 'Recibido, ¿quieres saber algo más?', sender: 'bot' };
-      setMessages((prevMessages) => [...prevMessages, botResponse]);
-    }, 1000);
+    try {
+      // Enviar el mensaje al backend y obtener la respuesta
+      const response = await sendMessageToAi(inputMessage);
+
+      // Añadir la respuesta del chatbot al chat
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: 'bot', text: response.reply }, // 👈 Aquí va la propiedad que devuelve tu backend
+      ]);
+    } catch (error) {
+      console.error('Error al enviar el mensaje:', error.message);
+    }
+  };
   };
 
   return (
