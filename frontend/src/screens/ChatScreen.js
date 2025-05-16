@@ -21,7 +21,7 @@ const ChatScreen = ({ navigation }) => {
   const [inputMessage, setInputMessage] = useState('');
 
   // Función para enviar un mensaje
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (inputMessage.trim() === '') return;
 
     // Añadir mensaje del usuario
@@ -42,7 +42,6 @@ const ChatScreen = ({ navigation }) => {
     } catch (error) {
       console.error('Error al enviar el mensaje:', error.message);
     }
-  };
   };
 
   return (
