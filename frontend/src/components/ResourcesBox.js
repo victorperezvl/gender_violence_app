@@ -6,7 +6,7 @@ const ResourcesBox = () => {
   const navigation = useNavigation();
 
   const goToResourcesScreen = () => {
-    navigation.navigate('Resources');
+    navigation.navigate('Resource');
   };
 
   return (
