@@ -9,6 +9,7 @@ const HomeScreen = ({ navigation }) => {
   const scrollViewRef = useRef();
   const boxHomeRef = useRef();
 
+  // Function to scroll to the ResourcesBox
   const scrollToResources = () => {
      boxHomeRef.current?.measureLayout(
       scrollViewRef.current.getInnerViewNode(),

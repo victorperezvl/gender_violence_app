@@ -1,3 +1,4 @@
+// Service to connect to the backend API for sending messages to the AI
 export const sendMessageToAi = async (message) => {
     try {
         const response = await fetch('http://localhost:3000/api/chat/message', {

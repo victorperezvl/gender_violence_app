@@ -1,3 +1,4 @@
+// Box on the home screen to access the resources screen
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';

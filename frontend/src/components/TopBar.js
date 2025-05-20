@@ -1,3 +1,4 @@
+// Navigation bar at the top of the home screen
 import React from 'react';
 import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 

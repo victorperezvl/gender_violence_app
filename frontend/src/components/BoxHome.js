@@ -1,3 +1,4 @@
+// Box with the first buttons on the home screen
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';

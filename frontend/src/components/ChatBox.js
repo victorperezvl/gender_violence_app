@@ -1,3 +1,4 @@
+//Box on the home screen to access the chat screen
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
