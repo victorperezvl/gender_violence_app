@@ -4,7 +4,7 @@ import { OpenAI } from 'openai';
 // New instance of OpenAI client
 const openai = new OpenAI ({
     apiKey: process.env.OPENAI_KEY, 
-    model: "gpt-4",                    
+    model: "gpt-3.5-turbo",                    
     temperature: 0.7,                   
     max_tokens: 2000,                   
     top_p: 1,                           
@@ -17,7 +17,7 @@ export async function messageToAI ( messages ) {
     try {
         const response = await openai.chat.completions.create({
           messages, 
-          model: 'gpt-4', 
+          model: 'gpt-3.5-turbo', 
         });
         return response.choices[0].message.content;
       } catch (error) {

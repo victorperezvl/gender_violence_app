@@ -2,7 +2,7 @@
 import { messageToAI } from '../config/openai.js';
 
 export async function handleChat(req, res) {
-  const { userMessage, userId } = req.body;
+  const { userMessage } = req.body;
 
   const messages = [
     {
