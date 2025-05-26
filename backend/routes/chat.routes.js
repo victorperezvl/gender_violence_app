@@ -6,7 +6,7 @@ import { authMiddleware } from '../middlewares/auth.middlewares.js';
 import { getHistory, deleteHistory } from '../controllers/history.controller.js';
 
 // Chat routes
-router.post('/message', authMiddleware, handleChat); 
+router.post('/message', handleChat); 
 
 // History routes
 router.delete('/history', authMiddleware, deleteHistory);
