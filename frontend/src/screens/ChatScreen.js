@@ -30,7 +30,7 @@ const ChatScreen = ({ navigation }) => {
 
       setMessages((prevMessages) => [
         ...prevMessages,
-        { sender: 'bot', text: response.reply }, 
+        { sender: 'bot', text: response }, 
       ]);
     } catch (error) {
       console.error('Error al enviar el mensaje:', error.message);
