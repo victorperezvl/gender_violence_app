@@ -11,7 +11,7 @@ const TopBar = ({ onHelpPress }) => {
         resizeMode="contain"
       />
       <TouchableOpacity style={styles.loginButton} onPress={onHelpPress}>
-        <Text style={styles.helpButtonText}>Iniciar sesión</Text>
+        <Text style={styles.helpButtonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.helpButton} onPress={onHelpPress}>
         <Text style={styles.loginButtonText}>Ayuda</Text>
