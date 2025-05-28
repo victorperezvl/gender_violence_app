@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { sendMessageToAi } from '../services/chatService';
+import { Keyboard } from 'react-native';
 
 const ChatScreen = ({ navigation }) => {
   const [messages, setMessages] = useState([
@@ -24,6 +25,8 @@ const ChatScreen = ({ navigation }) => {
     const newMessage = { id: Date.now(), text: inputMessage, sender: 'user' };
     setMessages([...messages, newMessage]);
     setInputMessage('');
+
+    Keyboard.dismiss();
 
     try {
       const response = await sendMessageToAi(inputMessage);
