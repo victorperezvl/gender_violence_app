@@ -7,7 +7,7 @@ const TopBar = ({ onHelpPress }) => {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={require('../../assets/ayto_motril.png')}
+        source={require('../../assets/logo.png')}
         resizeMode="contain"
       />
       <TouchableOpacity style={styles.loginButton} onPress={onHelpPress}>
