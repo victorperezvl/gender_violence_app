@@ -6,9 +6,13 @@ import ResourceScreen from '../screens/ResourceScreen';
 
 const Stack = createNativeStackNavigator();
 
+
+
 const MainStack = () => {
+  
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="Home"
+      screenOptions={{headerShown: false,}}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Chat" component={ChatScreen} />
       <Stack.Screen name="Resource" component={ResourceScreen} />
