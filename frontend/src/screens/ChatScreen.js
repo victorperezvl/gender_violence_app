@@ -8,10 +8,12 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context'; 
 import { sendMessageToAi } from '../services/chatService';
-import { Keyboard } from 'react-native';
 
 const ChatScreen = ({ navigation }) => {
   const [messages, setMessages] = useState([
@@ -22,18 +24,16 @@ const ChatScreen = ({ navigation }) => {
   const sendMessage = async () => {
     if (inputMessage.trim() === '') return;
 
-    const newMessage = { id: Date.now(), text: inputMessage, sender: 'user' };
+    const newMessage = { id: Date.now().toString(), text: inputMessage, sender: 'user' };
     setMessages([...messages, newMessage]);
     setInputMessage('');
-
-    Keyboard.dismiss();
 
     try {
       const response = await sendMessageToAi(inputMessage);
 
       setMessages((prevMessages) => [
         ...prevMessages,
-        { sender: 'bot', text: response }, 
+        { id: Date.now().toString(), sender: 'bot', text: response },
       ]);
     } catch (error) {
       console.error('Error al enviar el mensaje:', error.message);
@@ -41,11 +41,7 @@ const ChatScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={90} 
-    >
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Ionicons
           name="arrow-back"
@@ -56,41 +52,51 @@ const ChatScreen = ({ navigation }) => {
         <Text style={styles.headerTitle}>💬 Asistente de Apoyo</Text>
       </View>
 
-      <ScrollView
-        style={styles.chatWindow}
-        contentContainerStyle={{ paddingVertical: 10 }}
-        showsVerticalScrollIndicator={false}
+      <KeyboardAvoidingView
+        style={styles.keyboardAvoidingView}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
       >
-        {messages.map((message) => (
-          <View
-            key={message.id}
-            style={[
-              styles.message,
-              message.sender === 'user' ? styles.userMessage : styles.botMessage,
-            ]}
-          >
-            <Text style={styles.messageText}>{message.text}</Text>
-          </View>
-        ))}
-      </ScrollView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.chatContainer}>
+            <ScrollView
+              style={styles.chatWindow}
+              contentContainerStyle={{ paddingVertical: 10 }}
+              showsVerticalScrollIndicator={false}
+            >
+              {messages.map((message) => (
+                <View
+                  key={message.id}
+                  style={[
+                    styles.message,
+                    message.sender === 'user' ? styles.userMessage : styles.botMessage,
+                  ]}
+                >
+                  <Text style={styles.messageText}>{message.text}</Text>
+                </View>
+              ))}
+            </ScrollView>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Escribe tu mensaje..."
-          value={inputMessage}
-          onChangeText={setInputMessage}
-          returnKeyType="send"
-          onSubmitEditing={sendMessage}
-          multiline={true} 
-          numberOfLines={1} 
-          textAlignVertical="top"         
-        />
-        <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-          <Ionicons name="send" size={20} color="white" />
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.input}
+                placeholder="Escribe tu mensaje..."
+                value={inputMessage}
+                onChangeText={setInputMessage}
+                returnKeyType="send"
+                onSubmitEditing={sendMessage}
+                multiline={true}
+                numberOfLines={1}
+                textAlignVertical="top"
+              />
+              <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+                <Ionicons name="send" size={20} color="white" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
@@ -107,18 +113,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 10,
     height: 40,
-    weight: 30,
     margin: 15, 
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
+    marginTop: 30,
   },
   headerTitle: {
     color: '#FFFFFF',
     fontSize: 18,
     marginLeft: 10,
     fontWeight: 'bold',
+  },
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+  chatContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
   },
   chatWindow: {
     flex: 1,
@@ -151,7 +164,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     margin: 20,
     height: 50,
-    marginBottom: 30,
     marginTop: 10,
   },
   input: {
