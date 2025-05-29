@@ -1,8 +1,11 @@
 // Service to connect to the backend API for sending messages to the AI
+import Constants from 'expo-constants';
+
+const apiUrl = Constants.expoConfig.extra.apiUrl;    
 
 export const sendMessageToAi = async (userMessage) => {
     try {
-        const response = await fetch('https://gender-violence-app.onrender.com/api/chat/message', {
+        const response = await fetch(`${apiUrl}/api/chat/message`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
