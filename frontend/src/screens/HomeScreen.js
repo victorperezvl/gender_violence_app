@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     marginHorizontal: 20,            
-    marginTop: 80,            
+    marginTop: 50,            
   },
   
 });
