@@ -5,10 +5,16 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "API_URL": "https://tu-backend.onrender.com"
+      }
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "API_URL": "https://tu-backend.onrender.com"
+      }
     },
     "production": {
       "android": {
@@ -16,7 +22,11 @@
       },
       "ios": {
         "simulator": true
+      },
+      "env": {
+        "API_URL": "https://gender-violence-app.onrender.com"
       }
     }
   }
 }
+
