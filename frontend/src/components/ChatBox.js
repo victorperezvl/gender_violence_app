@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '100%',
     height: 240,
-    marginTop: 20,
+    marginVertical: 10,
     flex: 1,
   },
   title: {

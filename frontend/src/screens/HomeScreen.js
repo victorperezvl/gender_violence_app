@@ -21,11 +21,13 @@ const HomeScreen = ({ navigation }) => {
 
   return (
      <SafeAreaView style={styles.container}>
-      <TopBar />
       <ScrollView style={styles.content} ref={scrollViewRef}>
-          <BoxHome onScrollToResources = { scrollToResources }/>
-          <ChatBox />
-          <ResourcesBox ref={boxHomeRef} />
+          <TopBar />
+          <View style={styles.contentWithMargin}>
+            <BoxHome onScrollToResources={scrollToResources}/>
+            <ChatBox />
+            <ResourcesBox ref={boxHomeRef} />
+          </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -37,11 +39,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   content: {
-    flex: 1,
-    marginHorizontal: 20,            
-    marginTop: 80,            
+    flex: 1,      
+    marginTop: 20,               
   },
+
+  contentWithMargin: {
+    marginHorizontal: 20,
+  }
   
 });
+
+
 
 export default HomeScreen;

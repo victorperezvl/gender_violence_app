@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 20,
     alignItems: 'center',
+    marginVertical: 10
   },
   header: {
     alignItems: 'center',
