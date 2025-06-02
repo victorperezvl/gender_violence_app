@@ -10,12 +10,15 @@ const TopBar = ({ onHelpPress }) => {
         source={require('../../assets/logo.png')}
         resizeMode="contain"
       />
-      <TouchableOpacity style={styles.loginButton} onPress={onHelpPress}>
-        <Text style={styles.helpButtonText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.helpButton} onPress={onHelpPress}>
-        <Text style={styles.loginButtonText}>Ayuda</Text>
-      </TouchableOpacity>
+
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.button} onPress={onHelpPress}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={onHelpPress}>
+          <Text style={styles.buttonText}>Ayuda</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -37,25 +40,18 @@ const styles = StyleSheet.create({
     width: 100,
     height: 50,
   },
-  helpButton: {
+  buttonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10, 
+  },
+  button: {
     backgroundColor: '#6A3DA6',
     paddingVertical: 8,
     paddingHorizontal: 15,
     borderRadius: 8,
   },
-  helpButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  loginButton: {
-    backgroundColor: '#6A3DA6',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    marginRight: -100,
-  },
-  loginButtonText: {
+  buttonText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: 'bold',
@@ -63,3 +59,4 @@ const styles = StyleSheet.create({
 });
 
 export default TopBar;
+
